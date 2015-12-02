@@ -9,7 +9,7 @@ RECENT CHANGES
 
 OVERVIEW
 -----
-KP Floating Panel allows easy access to KeePass entries through a small floating panel on your screen.  Allows quick keyboard access and searching (along with opening, auto type, etc) without opening the KeePass window.  Multiple keyboard shortcut an display options.  Originally written by Alexeev Alexander and improved upon by s² now maintined by Mitch Capper.  Older Changelog has full history.
+KP Floating Panel allows easy access to KeePass entries through a small floating panel on your screen.  Allows quick keyboard access and searching (along with opening, auto type, etc) without opening the KeePass window.  Multiple keyboard shortcut an display options.  Originally written by Alexeev Alexander and improved upon by s² now maintained by Mitch Capper.  Older Changelog has full history.
 
 INSTALLATION
 -----
