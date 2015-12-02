@@ -23,7 +23,7 @@ namespace KPFloatingPanel {
 		}
 		public override string UpdateUrl {
 			get {
-				return "http://mitchcapper.com/keepass_versions.txt";
+				return "http://mitchcapper.com/keepass_versions.txt?KPFP";
 			}
 		}
 		public override bool Initialize(IPluginHost AHost) {
