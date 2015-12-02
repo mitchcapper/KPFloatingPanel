@@ -9,16 +9,25 @@ RECENT CHANGES
 
 OVERVIEW
 -----
-
+KP Floating Panel allows easy access to KeePass entries through a small floating panel on your screen.  Allows quick keyboard access and searching (along with opening, auto type, etc) without opening the KeePass window.  Multiple keyboard shortcut an display options.  Originally written by Alexeev Alexander and improved upon by s² now maintined by Mitch Capper.  Older Changelog has full history.
 
 INSTALLATION
 -----
 - Download from https://github.com/mitchcapper/KPFloatingPanel/releases
 - Place the (KPFloatPanel.plgx) in the KeePass program directory
-- Start KeePass and open a database.  Right click on the floating panel near the top of the screen and go to settings, configure as you like.
+- Start KeePass and open a database.  Right click on the floating panel near the top of the screen and go to settings, configure as you like.  
+- Click on the floating panel to open, or use the global hotkey setup to open it from the keyboard
 
+MAJOR OPTIONS
+-----
+- You can choose to display at a certain transparency (along with foreground and background colors) by default the display is just the database name
+- Show clock in the floating panel
+- Only show entries from a specific subgroup in keepass rather than all entries
+- Search option (that auto focuses) so you can just type to find an entry
+- Global hot key so you can just hit the keyboard combination to open the floating panel
+- QuickPass hot key to get a quick random password
 
-OLD CHANGELOG
+OLDER CHANGELOG
 -----
 6.1 (2012-10-07) changed by MitchCapper
  - Rewrote code dealing with sub-group menus that was very broken (and caused crashes)
