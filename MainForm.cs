@@ -42,6 +42,7 @@ namespace KPFloatingPanel {
 		}
 		public MainForm() {
 			InitializeComponent();
+			this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
 			FMoving = 0;
 			FLastName = "";
 			FOptions = new OptionsClass();
