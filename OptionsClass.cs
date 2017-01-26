@@ -26,14 +26,19 @@ namespace KPFloatingPanel {
         internal bool shortcutAltQuick;
         internal bool shortcutCntrlQuick;
         internal bool shortcutWinQuick;
+		private Color ColorFromVal(string name) {
+			if (name != null && name.StartsWith("#"))
+				return System.Drawing.ColorTranslator.FromHtml(name);
+			return Color.FromName(name);
+		}
 		public void Load() {
 			try {
 				RegistryKey Key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\KeePassFloatingPanel");
 				if (Key == null)
 					return;
 				Transparency = (int)Key.GetValue("Transparency", (int)Transparency);
-				PanelColor = Color.FromName((string)Key.GetValue("PanelColor", PanelColor.Name));
-				FontColor = Color.FromName((string)Key.GetValue("FontColor", FontColor.Name));
+				PanelColor = ColorFromVal((string)Key.GetValue("PanelColor", PanelColor.Name));
+				FontColor = ColorFromVal((string)Key.GetValue("FontColor", FontColor.Name));
 				URLAction = (int)Key.GetValue("URLAction", URLAction);
 				sortAlphabetical = Convert.ToBoolean((string)Key.GetValue("SortEntries"));
 				startGroupUUID = (string)Key.GetValue("startGroupUUID");
@@ -67,8 +72,8 @@ namespace KPFloatingPanel {
 				if (Key == null)
 					return;
 				Key.SetValue("Transparency", (int)Transparency);
-				Key.SetValue("PanelColor", PanelColor.Name);
-				Key.SetValue("FontColor", FontColor.Name);
+				Key.SetValue("PanelColor", PanelColor.IsNamedColor ? PanelColor.Name : "#" + PanelColor.Name);
+				Key.SetValue("FontColor", FontColor.IsNamedColor ?  FontColor.Name : "#" + FontColor.Name);
 				Key.SetValue("URLAction", URLAction);
 				Key.SetValue("SortEntries", sortAlphabetical); //s²
 				Key.SetValue("ShowClock", showClock); //s²
