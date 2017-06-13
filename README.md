@@ -4,6 +4,7 @@ KP Floating Panel for KeePass 2.x
 RECENT CHANGES
 -----
 (MitchCapper unless otherwise noted)
+- 7.5 Some transparency and minor fixes.
 - 7.0 Moved to git(hub), KP 2.3 support, High DPI support
 
 
