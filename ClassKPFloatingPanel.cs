@@ -18,7 +18,7 @@ namespace KPFloatingPanel {
 		private void InitForm() {
 			FForm = new MainForm();
 			FForm.Host = FHost;
-			FForm.ResetPosition();
+			FForm.RestorePosition();
 			FForm.Show();
 		}
 		public override string UpdateUrl {
@@ -76,7 +76,7 @@ namespace KPFloatingPanel {
 			FForm.TopMost = false;
 			FForm.Hide();
 			FForm.TopMost = true;
-			FForm.ResetPosition();
+			FForm.RestorePosition();
 			FForm.Show();
 			FForm.BringToFront();
 			if (FForm.Opacity < 0.2)

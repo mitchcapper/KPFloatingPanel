@@ -14,7 +14,9 @@ namespace KPFloatingPanel {
 		internal bool showSearch;
 		internal bool showLastOne;
 		internal bool foldersFirst;
-		internal string startGroupUUID;
+        internal int lastPositionX;
+        internal int lastPositionY;
+        internal string startGroupUUID;
 		internal string shortcutKey;
 		internal bool shortcutShift;
 		internal bool shortcutAlt;
@@ -46,6 +48,8 @@ namespace KPFloatingPanel {
 				showSearch = Convert.ToBoolean((string)Key.GetValue("ShowSearch"));
 				showLastOne = Convert.ToBoolean((string)Key.GetValue("ShowLastOne"));
 				foldersFirst = Convert.ToBoolean((string)Key.GetValue("foldersFirst"));
+                lastPositionX = (int)Key.GetValue("lastPositionX", (int)lastPositionX);
+                lastPositionY = (int)Key.GetValue("lastPositionY", (int)lastPositionY);
 
 				shortcutShift = Convert.ToBoolean((string)Key.GetValue("shortcutShift"));
 				shortcutAlt = Convert.ToBoolean((string)Key.GetValue("shortcutAlt"));
@@ -80,7 +84,10 @@ namespace KPFloatingPanel {
 				Key.SetValue("ShowSearch", showSearch); //s²
 				Key.SetValue("ShowLastOne", showLastOne); //s²
 				Key.SetValue("foldersFirst", foldersFirst); //s²
-				Key.SetValue("startGroupUUID", startGroupUUID);
+                Key.SetValue("lastPositionX", (int)lastPositionX);
+                Key.SetValue("lastPositionY", (int)lastPositionY);
+				
+                Key.SetValue("startGroupUUID", startGroupUUID);
 				Key.SetValue("shortcutKey", shortcutKey);
 				Key.SetValue("shortcutAlt", shortcutAlt);
 				Key.SetValue("shortcutShift", shortcutShift);

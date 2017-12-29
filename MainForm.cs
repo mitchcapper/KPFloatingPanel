@@ -133,12 +133,23 @@ namespace KPFloatingPanel {
 			}
 			TopMost = true;
 		}
+        public void RestorePosition()
+        {
+            Rectangle R = Screen.GetWorkingArea(Host.MainWindow);
+            Top = R.Top;
+            Left = R.Left + R.Width - Width - SpaceForButtons;
 
-		public void ResetPosition() {
-			Rectangle R = Screen.GetWorkingArea(Host.MainWindow);
-			Top = R.Top;
-			Left = R.Left + R.Width - Width - SpaceForButtons;
-		}
+            if ((FOptions.lastPositionY > 0) && (FOptions.lastPositionY <= R.Height))
+            {
+                Top = FOptions.lastPositionY;
+            }
+
+            if ((FOptions.lastPositionX !=0) && (FOptions.lastPositionX <= (R.Left + R.Width - Width - SpaceForButtons)))
+            {
+                Left = FOptions.lastPositionX;
+            }
+        }
+		
 		private bool last_show_clock;
 		private void tmClock_Tick(object sender, EventArgs e) {
 
@@ -216,6 +227,9 @@ namespace KPFloatingPanel {
 				Location = new Point(Location.X + Cursor.Position.X - FOldX, Location.Y + Cursor.Position.Y - FOldY);
 				FOldX = Cursor.Position.X;
 				FOldY = Cursor.Position.Y;
+                FOptions.lastPositionY = FOldY;
+                FOptions.lastPositionX = FOldX;
+                FOptions.Save();
 			}
 		}
 
@@ -839,6 +853,11 @@ namespace KPFloatingPanel {
 				return cp;
 			}
 		}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
+        }
 	}
 
 }
