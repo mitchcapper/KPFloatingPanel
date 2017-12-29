@@ -22,6 +22,7 @@ namespace KPFloatingPanel {
 		internal bool shortcutAlt;
 		internal bool shortcutCntrl;
 		internal bool shortcutWin;
+        internal bool lockWindowPosition;
 
         internal string shortcutKeyQuick;
         internal bool shortcutShiftQuick;
@@ -55,6 +56,7 @@ namespace KPFloatingPanel {
 				shortcutAlt = Convert.ToBoolean((string)Key.GetValue("shortcutAlt"));
 				shortcutCntrl = Convert.ToBoolean((string)Key.GetValue("shortcutCntrl"));
 				shortcutWin = Convert.ToBoolean((string)Key.GetValue("shortcutWin"));
+                lockWindowPosition = Convert.ToBoolean((string)Key.GetValue("lockWindowPosition"));
 				shortcutKey = (string)Key.GetValue("shortcutKey");
 
                 shortcutShiftQuick = Convert.ToBoolean((string)Key.GetValue("shortcutShiftQuick"));
@@ -93,6 +95,7 @@ namespace KPFloatingPanel {
 				Key.SetValue("shortcutShift", shortcutShift);
 				Key.SetValue("shortcutCntrl", shortcutCntrl);
 				Key.SetValue("shortcutWin", shortcutWin);
+                Key.SetValue("lockWindowPosition", lockWindowPosition);
 
                 Key.SetValue("shortcutKeyQuick", shortcutKeyQuick);
                 Key.SetValue("shortcutAltQuick", shortcutAltQuick);
@@ -120,7 +123,8 @@ namespace KPFloatingPanel {
 			foldersFirst = true;
             shortcutAlt = shortcutCntrl = shortcutShift = shortcutWin = shortcutAltQuick = shortcutCntrlQuick = shortcutShiftQuick = shortcutWinQuick = false;
             shortcutKey = shortcutKeyQuick = "";
-			Load();
+            lockWindowPosition = false;
+            Load();
 		}
 	}
 }

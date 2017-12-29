@@ -214,9 +214,12 @@ namespace KPFloatingPanel {
 		}
 
 		private void lbClock_MouseDown(object sender, MouseEventArgs e) {
-			FOldX = Cursor.Position.X;
-			FOldY = Cursor.Position.Y;
-			FMoving = e.Button == MouseButtons.Left ? 1 : 0;
+			if (FOptions.lockWindowPosition == false)
+            {
+                FOldX = Cursor.Position.X;
+			    FOldY = Cursor.Position.Y;
+			    FMoving = e.Button == MouseButtons.Left ? 1 : 0;
+            }
 		}
 
 

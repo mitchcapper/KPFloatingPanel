@@ -65,6 +65,7 @@ namespace KPFloatingPanel
             cbxShortcutWinQuick.Checked = Options.shortcutWinQuick;
 			cbxShowFoldersBeforeEntries.Checked = Options.foldersFirst;
 			cbxShowSearch.Checked = Options.showSearch;
+            cbxLockPosition.Checked = Options.lockWindowPosition;
 			cbxShowLastOne.Checked = Options.showLastOne;
 			txtShortcutKey.Text = Options.shortcutKey;
             txtShortcutKeyQuick.Text = Options.shortcutKeyQuick;
@@ -106,6 +107,7 @@ namespace KPFloatingPanel
             Options.shortcutKeyQuick = txtShortcutKeyQuick.Text.ToUpper();
             Options.shortcutKey = txtShortcutKey.Text.ToUpper();
 			Options.showSearch = cbxShowSearch.Checked;
+            Options.lockWindowPosition = cbxLockPosition.Checked;
 			Options.showLastOne = cbxShowLastOne.Checked;
 			Options.Save();
 
