@@ -47,6 +47,7 @@ namespace KPFloatingPanel
             this.tmClock = new System.Windows.Forms.Timer(this.components);
             this.ilIcons = new System.Windows.Forms.ImageList(this.components);
             this.timer_search = new System.Windows.Forms.Timer(this.components);
+            this.openKeepassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pmMainMenu.SuspendLayout();
             this.pmPasswords.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +66,7 @@ namespace KPFloatingPanel
             // 
             this.pmMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miHide,
+            this.openKeepassToolStripMenuItem,
             this.miSetup,
             this.toolStripSeparator2,
             this.miAbout,
@@ -187,6 +189,12 @@ namespace KPFloatingPanel
             // 
             this.timer_search.Tick += new System.EventHandler(this.timer_search_Tick);
             // 
+            // openKeepassToolStripMenuItem
+            // 
+            this.openKeepassToolStripMenuItem.Name = "openKeepassToolStripMenuItem";
+            resources.ApplyResources(this.openKeepassToolStripMenuItem, "openKeepassToolStripMenuItem");
+            this.openKeepassToolStripMenuItem.Click += new System.EventHandler(this.openKeepassToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -233,5 +241,6 @@ namespace KPFloatingPanel
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripMenuItem LastOne;
+        private System.Windows.Forms.ToolStripMenuItem openKeepassToolStripMenuItem;
 	}
 }

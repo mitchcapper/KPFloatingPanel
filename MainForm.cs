@@ -861,6 +861,11 @@ namespace KPFloatingPanel {
         {
             
         }
+
+        private void openKeepassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KeePass.Program.MainForm.EnsureVisibleForegroundWindow(true,true);
+        }
 	}
 
 }

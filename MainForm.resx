@@ -134,6 +134,12 @@
   <data name="miHide.ToolTipText" xml:space="preserve">
     <value>Hide this panel</value>
   </data>
+  <data name="openKeepassToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 22</value>
+  </data>
+  <data name="openKeepassToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open Keepass</value>
+  </data>
   <data name="miSetup.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 22</value>
   </data>
@@ -165,7 +171,7 @@
     <value>Exit KeePass</value>
   </data>
   <data name="pmMainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 104</value>
+    <value>142, 148</value>
   </data>
   <data name="&gt;&gt;pmMainMenu.Name" xml:space="preserve">
     <value>pmMainMenu</value>
@@ -256,7 +262,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACM
-        OAAAAk1TRnQBSQFMAgEBDQEAASQBAAEMAQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        OAAAAk1TRnQBSQFMAgEBDQEAARwBAAEcAQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABQAMAAQEBAAEYBgABMBIAAb0CiQGWAnABlQJvAcwCmLQAAU8BbwF/AQEBtQHhAQEBqwHaAW0CXwH2
         At2xAAFcAWgBaQEBAegB/wEBAe4B/wEBAYMBtQGBAmgBvwKLrgABiAJsAQEB2gH0AQEB2QH3AQEBzAH6
         AQEBuAHrAUABRQFsAdwCq6sAAe8CzAFwAmYBAQHbAfQBAQHaAfYBAQHuAf8BAQGaAdQBYwJdAbsCiAHw
@@ -605,6 +611,12 @@
   </data>
   <data name="&gt;&gt;timer_search.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openKeepassToolStripMenuItem.Name" xml:space="preserve">
+    <value>openKeepassToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openKeepassToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
