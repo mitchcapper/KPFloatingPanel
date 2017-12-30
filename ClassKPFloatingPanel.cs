@@ -20,6 +20,8 @@ namespace KPFloatingPanel {
 			FForm.Host = FHost;
 			FForm.RestorePosition();
 			FForm.Show();
+
+
 		}
 		public override string UpdateUrl {
 			get {
@@ -33,6 +35,7 @@ namespace KPFloatingPanel {
 			FHost = AHost;
 
 			InitForm();
+
 
 			FMenuItem = new ToolStripMenuItem();
 			FMenuItem.Text = "Show Floating Panel";

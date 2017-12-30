@@ -34,6 +34,7 @@ namespace KPFloatingPanel
             this.btOk = new System.Windows.Forms.Button();
             this.pcOptions = new System.Windows.Forms.TabControl();
             this.tsBehavior = new System.Windows.Forms.TabPage();
+            this.cbxLockPosition = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxShortcutWinQuick = new System.Windows.Forms.CheckBox();
             this.cbxShortcutAltQuick = new System.Windows.Forms.CheckBox();
@@ -68,7 +69,6 @@ namespace KPFloatingPanel
             this.lbPanelColor = new System.Windows.Forms.Label();
             this.lbTransp = new System.Windows.Forms.Label();
             this.ColorDialog = new System.Windows.Forms.ColorDialog();
-            this.cbxLockPosition = new System.Windows.Forms.CheckBox();
             this.pnButtons.SuspendLayout();
             this.pcOptions.SuspendLayout();
             this.tsBehavior.SuspendLayout();
@@ -154,6 +154,15 @@ namespace KPFloatingPanel
             this.tsBehavior.TabIndex = 1;
             this.tsBehavior.Text = "Behavior";
             this.tsBehavior.UseVisualStyleBackColor = true;
+            // 
+            // cbxLockPosition
+            // 
+            this.cbxLockPosition.Location = new System.Drawing.Point(20, 233);
+            this.cbxLockPosition.Name = "cbxLockPosition";
+            this.cbxLockPosition.Size = new System.Drawing.Size(220, 24);
+            this.cbxLockPosition.TabIndex = 24;
+            this.cbxLockPosition.Text = "Lock Panel Position";
+            this.cbxLockPosition.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -322,6 +331,7 @@ namespace KPFloatingPanel
             this.cbxShowClock.TabIndex = 5;
             this.cbxShowClock.Text = "Show Clock";
             this.cbxShowClock.UseVisualStyleBackColor = true;
+            this.cbxShowClock.CheckedChanged += new System.EventHandler(this.cbxShowClock_CheckedChanged);
             // 
             // label2
             // 
@@ -389,7 +399,7 @@ namespace KPFloatingPanel
             this.tsView.Location = new System.Drawing.Point(4, 22);
             this.tsView.Name = "tsView";
             this.tsView.Padding = new System.Windows.Forms.Padding(3);
-            this.tsView.Size = new System.Drawing.Size(258, 286);
+            this.tsView.Size = new System.Drawing.Size(260, 327);
             this.tsView.TabIndex = 0;
             this.tsView.Text = "View";
             this.tsView.UseVisualStyleBackColor = true;
@@ -491,15 +501,6 @@ namespace KPFloatingPanel
             // 
             this.ColorDialog.AnyColor = true;
             this.ColorDialog.FullOpen = true;
-            // 
-            // cbxLockPosition
-            // 
-            this.cbxLockPosition.Location = new System.Drawing.Point(20, 233);
-            this.cbxLockPosition.Name = "cbxLockPosition";
-            this.cbxLockPosition.Size = new System.Drawing.Size(220, 24);
-            this.cbxLockPosition.TabIndex = 24;
-            this.cbxLockPosition.Text = "Lock Panel Position";
-            this.cbxLockPosition.UseVisualStyleBackColor = true;
             // 
             // OptionsForm
             // 

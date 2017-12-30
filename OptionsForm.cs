@@ -124,6 +124,11 @@ namespace KPFloatingPanel
 		{
 			btChangeFontColor_Click(sender, e);
 		}
+
+        private void cbxShowClock_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
 	}
 	class StartGroupDropdown
 	{

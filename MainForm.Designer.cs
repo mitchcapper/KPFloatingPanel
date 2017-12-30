@@ -33,6 +33,7 @@ namespace KPFloatingPanel
             this.lbClock = new System.Windows.Forms.Label();
             this.pmMainMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miHide = new System.Windows.Forms.ToolStripMenuItem();
+            this.openKeepassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miSetup = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@ namespace KPFloatingPanel
             this.tmClock = new System.Windows.Forms.Timer(this.components);
             this.ilIcons = new System.Windows.Forms.ImageList(this.components);
             this.timer_search = new System.Windows.Forms.Timer(this.components);
-            this.openKeepassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pmMainMenu.SuspendLayout();
             this.pmPasswords.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,12 @@ namespace KPFloatingPanel
             this.miHide.Name = "miHide";
             resources.ApplyResources(this.miHide, "miHide");
             this.miHide.Click += new System.EventHandler(this.miHide_Click);
+            // 
+            // openKeepassToolStripMenuItem
+            // 
+            this.openKeepassToolStripMenuItem.Name = "openKeepassToolStripMenuItem";
+            resources.ApplyResources(this.openKeepassToolStripMenuItem, "openKeepassToolStripMenuItem");
+            this.openKeepassToolStripMenuItem.Click += new System.EventHandler(this.openKeepassToolStripMenuItem_Click);
             // 
             // miSetup
             // 
@@ -126,6 +132,7 @@ namespace KPFloatingPanel
             this.pmPasswords.Name = "pmPasswords";
             this.pmPasswords.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             resources.ApplyResources(this.pmPasswords, "pmPasswords");
+            this.pmPasswords.Opening += new System.ComponentModel.CancelEventHandler(this.pmPasswords_Opening);
             this.pmPasswords.Click += new System.EventHandler(this.pmPasswords_Click);
             // 
             // miNoPasswords
@@ -188,12 +195,6 @@ namespace KPFloatingPanel
             // timer_search
             // 
             this.timer_search.Tick += new System.EventHandler(this.timer_search_Tick);
-            // 
-            // openKeepassToolStripMenuItem
-            // 
-            this.openKeepassToolStripMenuItem.Name = "openKeepassToolStripMenuItem";
-            resources.ApplyResources(this.openKeepassToolStripMenuItem, "openKeepassToolStripMenuItem");
-            this.openKeepassToolStripMenuItem.Click += new System.EventHandler(this.openKeepassToolStripMenuItem_Click);
             // 
             // MainForm
             // 
