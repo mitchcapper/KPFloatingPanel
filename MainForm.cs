@@ -15,7 +15,8 @@ using KeePassLib.Cryptography.PasswordGenerator;
 using KeePassLib.Security;
 using KeePassLib.Utility;
 
-using System.Runtime.InteropServices; // for SetWindowsPos
+using System.Runtime.InteropServices;
+using System.Reflection; // for SetWindowsPos
 
 namespace KPFloatingPanel {
 	internal partial class MainForm : Form {
@@ -25,7 +26,8 @@ namespace KPFloatingPanel {
 		private string FLastName;
 		private OptionsClass FOptions;
 		internal IPluginHost Host;
-
+        private MethodInfo mSelectEntriesMethod;
+        
 		private const int SpaceForButtons = 300;
 		private HotKeyboardHook kb_shortcut;
         private HotKeyboardHook kb_shortcut_quick;
@@ -49,8 +51,12 @@ namespace KPFloatingPanel {
 			tmClock_Tick(null, null);
 			ApplyOptions();
 
+
+
 			Program.Translation.ApplyTo(this);
 			Program.Translation.ApplyTo("KeePass.Forms.Plugins.PCFloatingPanel.MainForm.MainMenu", pmMainMenu.Items);
+
+
 		}
 
 
@@ -133,12 +139,23 @@ namespace KPFloatingPanel {
 			}
 			TopMost = true;
 		}
+        public void RestorePosition()
+        {
+            Rectangle R = Screen.GetWorkingArea(Host.MainWindow);
+            Top = R.Top;
+            Left = R.Left + R.Width - Width - SpaceForButtons;
 
-		public void ResetPosition() {
-			Rectangle R = Screen.GetWorkingArea(Host.MainWindow);
-			Top = R.Top;
-			Left = R.Left + R.Width - Width - SpaceForButtons;
-		}
+            if ((FOptions.lastPositionY > 0) && (FOptions.lastPositionY <= R.Height))
+            {
+                Top = FOptions.lastPositionY;
+            }
+
+            if ((FOptions.lastPositionX !=0) && (FOptions.lastPositionX <= (R.Left + R.Width - Width - SpaceForButtons)))
+            {
+                Left = FOptions.lastPositionX;
+            }
+        }
+		
 		private bool last_show_clock;
 		private void tmClock_Tick(object sender, EventArgs e) {
 
@@ -203,9 +220,12 @@ namespace KPFloatingPanel {
 		}
 
 		private void lbClock_MouseDown(object sender, MouseEventArgs e) {
-			FOldX = Cursor.Position.X;
-			FOldY = Cursor.Position.Y;
-			FMoving = e.Button == MouseButtons.Left ? 1 : 0;
+			if (FOptions.lockWindowPosition == false)
+            {
+                FOldX = Cursor.Position.X;
+			    FOldY = Cursor.Position.Y;
+			    FMoving = e.Button == MouseButtons.Left ? 1 : 0;
+            }
 		}
 
 
@@ -216,6 +236,9 @@ namespace KPFloatingPanel {
 				Location = new Point(Location.X + Cursor.Position.X - FOldX, Location.Y + Cursor.Position.Y - FOldY);
 				FOldX = Cursor.Position.X;
 				FOldY = Cursor.Position.Y;
+                FOptions.lastPositionY = FOldY;
+                FOptions.lastPositionX = FOldX;
+                FOptions.Save();
 			}
 		}
 
@@ -622,6 +645,7 @@ namespace KPFloatingPanel {
 
 			try {
 				AutoType.PerformIntoPreviousWindow(this, Entry,Host.Database);
+                SelectEntries(new PwObjectList<PwEntry> { Entry }, true, true);
 			}
 			catch (Exception ex) {
 				MessageService.ShowWarning(ex);
@@ -671,11 +695,31 @@ namespace KPFloatingPanel {
 					FieldAction(Item, PwDefs.UrlField, FIELD_ACTION.CLIPBOARD_COPY);
 				else
 					throw new Exception("Internal error in miItem_OpenURL (FOptions.URLAction)");
+            SelectEntries(new PwObjectList<PwEntry> { Entry }, true, true);
 		}
+
+        // Copied from AutoTypeShow plugin
+        private void SelectEntries(PwObjectList<PwEntry> lEntries, bool bDeselectOthers, bool bFocusFirst)
+        {
+            if (Host != null)
+            {
+                var mainWindowType = Host.MainWindow.GetType();
+                mSelectEntriesMethod = mainWindowType.GetMethod("SelectEntries", BindingFlags.Instance | BindingFlags.NonPublic);
+                if (mSelectEntriesMethod != null)
+                {
+                    mSelectEntriesMethod.Invoke(Host.MainWindow, new object[] { lEntries, bDeselectOthers, bFocusFirst });
+                }
+                else
+                {
+                    System.Diagnostics.Debug.Fail("Could not select the auto-typed entry, method not found");
+                }
+            }
+        }
 
 		void miItem_Click(object sender, EventArgs e) {
 			ToolStripMenuItem Item = (ToolStripMenuItem)sender;
 			FieldAction(Item, Item.Text, FIELD_ACTION.CLIPBOARD_COPY);
+
 		}
 		private enum FIELD_ACTION { CLIPBOARD_COPY, DRAG_DROP };
 		private void FieldAction(ToolStripMenuItem Item, string FieldName, FIELD_ACTION action) {
@@ -691,6 +735,7 @@ namespace KPFloatingPanel {
 				Entry.Expires = true;
 				Host.MainWindow.RefreshEntriesList();
 				Host.MainWindow.UpdateUI(false, null, false, null, false, null, true);
+                
 			}
 
 			if (action == FIELD_ACTION.CLIPBOARD_COPY) {
@@ -698,6 +743,7 @@ namespace KPFloatingPanel {
 					true, Program.Config.MainWindow.MinimizeAfterClipboardCopy ?
 					Host.MainWindow : null, Entry, Host.MainWindow.DocumentManager.ActiveDatabase);
 				Host.MainWindow.StartClipboardCountdown();
+                SelectEntries(new PwObjectList<PwEntry> { Entry }, true, true);
 			}
 			else if (action == FIELD_ACTION.DRAG_DROP)
 				Item.DoDragDrop(Entry.Strings.ReadSafe(FieldName), DragDropEffects.Copy);
@@ -715,7 +761,9 @@ namespace KPFloatingPanel {
 
 			if ((myForm.ShowDialog() == DialogResult.OK))
 				Host.MainWindow.UpdateUI(false, null, Host.MainWindow.DocumentManager.ActiveDatabase.UINeedsIconUpdate, null, true, null, true);
-			Host.MainWindow.RefreshEntriesList();
+            SelectEntries(new PwObjectList<PwEntry> { Entry }, true, true);
+            Host.MainWindow.RefreshEntriesList();
+            
 		}
 
 
@@ -839,6 +887,17 @@ namespace KPFloatingPanel {
 				return cp;
 			}
 		}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void openKeepassToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KeePass.Program.MainForm.EnsureVisibleForegroundWindow(true,true);
+            
+        }
 	}
 
 }
