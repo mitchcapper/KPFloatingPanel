@@ -10,7 +10,7 @@ RECENT CHANGES
 
 OVERVIEW
 -----
-KP Floating Panel allows easy access to KeePass entries through a small floating panel on your screen.  Allows quick keyboard access and searching (along with opening, auto type, etc) without opening the KeePass window.  Multiple keyboard shortcut an display options.  Originally written by Alexeev Alexander and improved upon by s² now maintained by Mitch Capper.  Older Changelog has full history.
+KP Floating Panel allows easy access to KeePass entries through a small floating panel on your screen.  Allows quick keyboard access and searching (along with opening, auto type, etc) without opening the KeePass window.  Multiple keyboard shortcut an display options.  Originally written by Alexeev Alexander and improved upon by sÂ² now maintained by Mitch Capper.  Older Changelog has full history.
 
 INSTALLATION
 -----
@@ -18,6 +18,19 @@ INSTALLATION
 - Place the (KPFloatPanel.plgx) in the KeePass program directory
 - Start KeePass and open a database.  Right click on the floating panel near the top of the screen and go to settings, configure as you like.  
 - Click on the floating panel to open, or use the global hotkey setup to open it from the keyboard
+
+### Chocolatey ðŸ“¦ 
+Or you can [use Chocolatey to install](https://community.chocolatey.org/packages/keepass-plugin-kpfloatingpanel#install) it in a more automated manner:
+
+```
+choco install keepass-plugin-kpfloatingpanel
+```
+
+To [upgrade KeePass Plugin KP Floating Panel](https://community.chocolatey.org/packages/keepass-plugin-kpfloatingpanel#upgrade) to the [latest release version](https://community.chocolatey.org/packages/keepass-plugin-kpfloatingpanel#versionhistory) for enjoying the newest features, run the following command from the command line or from PowerShell:
+
+```
+choco upgrade keepass-plugin-kpfloatingpanel
+```
 
 MAJOR OPTIONS
 -----
@@ -55,10 +68,10 @@ OLDER CHANGELOG
  -  Removed the floating panel from showing up in the ALT-Tab list.
  -  Ability to search right from the floating panel.  When search is enabled a textbox will appear as the top of the list, and any time it opens it will have focus by default.  As you type it will search the list and show you as you type the results.  You can then interact with the results or just hit enter and the first ones default action will be taken.  This allows for complete keyboard interaction with the floating panel, hit the global hot key, type part of the entry you want, hit enter, and your done.  When you search it flatens out all the groups, so even if the entry is in a sub-group it will show up in the results
 
-2.0.9 (2009.09.12) changed by s²
+2.0.9 (2009.09.12) changed by sÂ²
  -  implemented a new option to directly jump into the edit-entry dialog from floating panel
 
-1.0.2 (2009.06.20) changed by s²
+1.0.2 (2009.06.20) changed by sÂ²
  -  introduced new feature "sort alphabetical" which can be selected/deselected under settings=>behaviour
  -  compiled for KeePass v2.0.7
  -  Some minor changes due to suggestions of FxCop 
